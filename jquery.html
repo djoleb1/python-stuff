@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+</head>
+<body>
+    <div>
+        <h1>Search</h1>
+        <label>Search by ID</label> <br>
+        <input type="text" id="name"> <br>
+        <button onclick="loadData();" id="get">Get data</button>
+    </div>
+    
+    <div>
+        <h1>Upload</h1>
+        <label>Name</label> <br>
+        <input type="text" id="name_post"> <br>
+        <label>Surname</label> <br>
+        <input type="text" id="surname_post"> <br>
+        <label>Average Grade</label> <br>
+        <input type="text" id="avgrade_post"> <br>
+        <button onclick="sendData();" id="post">Post Data</button>
+    </div>
+    <script
+        src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript">
+        function loadData(){
+            let name = $('#name').val();
+            $.get('http://127.0.0.1:8080/?name='+name, function(data){
+                alert(data);
+            });    
+        } 
+        function sendData(){
+            let postName = $('#name_post').val();
+            let postSurname = $('#surname_post').val();
+            $.post('http://127.0.0.1:8080/?name='+postName+'&last_name='+postSurname, function(data){
+                alert(data);
+            });
+        }       
+    </script>
+
+</body>
+</html>
